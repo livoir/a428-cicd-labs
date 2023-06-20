@@ -1,5 +1,5 @@
 node {
-    docker.image('node:16-buster-slim').withRun('-p 3000:3000 --net=host')
+    docker.image('node:16-buster-slim').run('-p 3000:3000 --net=host')
 
     stage('Build') {
         sh 'npm install'
