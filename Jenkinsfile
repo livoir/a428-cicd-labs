@@ -6,11 +6,12 @@ node {
            }
        stage('Test') {
            sh './jenkins/scripts/test.sh'
+           input message: 'Lanjutkan ke tahapan deploy? (Klik Proceed untuk melanjutkan)'
        }
 
-       stage('Deliver') {
+       stage('Deploy') {
            sh './jenkins/scripts/deliver.sh'
-           input message: 'Finished using the web site? (Click "Proceed" to continue)'
+           sleep time: 1 unit: 'MINUTES'
            sh './jenkins/scripts/kill.sh'
        }
     }
